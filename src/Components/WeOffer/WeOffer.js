@@ -21,7 +21,7 @@ const WeOfferStyle = styled.div`
 const H1 = styled.h1`
     text-transform: uppercase;
     font-size: 1.4rem;
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
 
     @media (max-width: 1050px) {
         margin-bottom: 3rem;
