@@ -5,6 +5,15 @@ import Backdrop from './Components/Backdrop/Backdrop'
 import Category from './Components/Category/Category'
 import ImgDetails from './Components/Category/ImgDetails'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Footer from './Components/Footer/Footer';
+import styled from 'styled-components';
+import ScrollTop from './Components/ScrollTop/ScrollTop';
+
+const Main = styled.main`
+  height: 100px;
+  margin-top: 7%;
+
+`
 
 function App() {
 
@@ -30,13 +39,16 @@ function App() {
         <Navbar drawerClickHandler={drawerToggleClickHandler}/>
         <SideDrawer show={sideDrawerOpen} />
         { backdrop }
-        <Switch>
-
-          {/* remember to create a theme for displaying imgs if needed */}
-          <Route path='/' component={Category} exact />
-          <Route path='/:category_id' component={Category} />
-          <Route path='/:photo_id' component={ImgDetails} />
-        </Switch>
+        <ScrollTop />
+        <Main>
+          <Switch>
+            {/* remember to create a theme for displaying imgs if needed */}
+            <Route path='/' component={Category} exact />
+            <Route path='/:category_id' component={Category} />
+            <Route path='/:photo_id' component={ImgDetails} />
+          </Switch>
+        </Main>
+        <Footer />
       </div>
     </BrowserRouter>
   );
