@@ -18,6 +18,7 @@ const Nav = styled.nav`
     box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.3);
     position: fixed;
     left: 0;
+    top: 10.5%;
     width: 100%;
     height: 70%;
     z-index: 300;

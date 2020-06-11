@@ -7,6 +7,7 @@ const BackdropStyle = styled.div`
     background: rgba(0,0,0,0.3);
     position: fixed;
     left: 0;
+    top: 10.5%;
 `
 
 const Backdrop = (props) => {
