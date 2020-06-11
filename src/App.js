@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import styled from 'styled-components';
 import ScrollTop from './Components/ScrollTop/ScrollTop';
+import WeOffer from './Components/WeOffer/WeOffer';
 
 const Main = styled.main`
   height: 100px;
@@ -48,6 +49,7 @@ function App() {
             <Route path='/:photo_id' component={ImgDetails} />
           </Switch>
         </Main>
+        <WeOffer />
         <Footer />
       </div>
     </BrowserRouter>
