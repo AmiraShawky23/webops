@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faCopyright } from '@fortawesome/free-solid-svg-icons'
 
 const FooterStyle = styled.footer`
     padding: 1.2rem 7rem 1.5rem 0.4rem;
@@ -32,7 +31,7 @@ const Icon = styled.a`
     margin-right: 0.5rem;
 `
 const CopyRight = styled.div`
-    font-size: 0.5rem;
+    font-size: 0.57rem;
     font-weight: 100;
     color: #fff;
     margin: 0 auto;
@@ -59,7 +58,6 @@ const Terms = styled.div`
     a{
         font-size: 0.7rem;
         color: #fff;
-
     }
 `
 
