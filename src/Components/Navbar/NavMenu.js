@@ -6,6 +6,7 @@ const Dropdown = styled.div`
     position: absolute;
     top: 100%;
     left: 0;
+    z-index: 300;
     background-color: white;
     min-width: 100%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
