@@ -18,11 +18,11 @@ const Nav = styled.nav`
     box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.3);
     position: fixed;
     left: 0;
-    top: 10.5%;
+    top: 7rem;
     width: 100%;
     height: 70%;
     z-index: 300;
-background: ${'url(' + bg + ')'} no-repeat center center fixed;
+    background: ${'url(' + bg + ')'} no-repeat center center fixed;
     background-size: cover;
 `
 const SidebarLi = styled.li`

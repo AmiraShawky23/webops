@@ -9,11 +9,16 @@ import Footer from './Components/Footer/Footer';
 import styled from 'styled-components';
 import ScrollTop from './Components/ScrollTop/ScrollTop';
 import WeOffer from './Components/WeOffer/WeOffer';
+import Categories from './Components/Categories/Categories';
 
 const Main = styled.main`
-  height: 100px;
-  margin-top: 7%;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 7rem;
 
+  @media (max-width: 922px) {
+      width: 90%;
+  }
 `
 
 function App() {
@@ -45,6 +50,7 @@ function App() {
           <Switch>
             {/* remember to create a theme for displaying imgs if needed */}
             <Route path='/' component={Category} exact />
+            <Route path='/categories' component={Categories} />
             <Route path='/:category_id' component={Category} />
             <Route path='/:photo_id' component={ImgDetails} />
           </Switch>
