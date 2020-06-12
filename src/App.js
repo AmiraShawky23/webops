@@ -12,7 +12,7 @@ import WeOffer from './Components/WeOffer/WeOffer';
 import Categories from './Components/Categories/Categories';
 
 const Main = styled.main`
-  width: 70%;
+  width: 72%;
   margin: 0 auto;
   margin-top: 7rem;
 

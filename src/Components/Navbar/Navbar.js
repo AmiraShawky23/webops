@@ -138,10 +138,10 @@ const Navbar = (props) => {
         <Header>
             <NavbarNavigation>
                 <Lang>
-                    <Link to={'/'}>
+                    <Link to='/'>
                         <FontAwesomeIcon icon={faUserPlus} />
                     </Link>
-                    <Link to={'/'}>
+                    <Link to='/'>
                         العربية
                     </Link>
                 </Lang>

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const CategoriesListStyle = styled.div`
     width: 100%;
     display: flex;
+    margin-bottom: 2rem;
 `
 
 const CategoriesList = ({list}) => {
