@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop'
@@ -24,23 +24,26 @@ const Main = styled.main`
   }
 `
 
-function App() {
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
-  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+
+function App() {
 
   let backdrop;
 
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const drawerToggleClickHandler = () => {
     setSideDrawerOpen(!sideDrawerOpen);
   }
-
   const backdropClickHandler = () => {
     setSideDrawerOpen(false);
   }
-
   if (sideDrawerOpen) {
     backdrop = <Backdrop click={backdropClickHandler} />
   }
+
+  const myRef = useRef(null)
+  const executeScroll = () => scrollToRef(myRef)
 
   return (
     <BrowserRouter>
@@ -48,7 +51,6 @@ function App() {
         <Navbar drawerClickHandler={drawerToggleClickHandler}/>
         <SideDrawer show={sideDrawerOpen} />
         { backdrop }
-        <ScrollTop />
         <Main>
           <Switch>
             {/* remember to create a theme for displaying imgs if needed */}
@@ -58,6 +60,7 @@ function App() {
             <Route path='/:photo_id' component={ImgDetails} />
           </Switch>
         </Main>
+        <ScrollTop onClick={executeScroll} />
         <WeOffer />
         <Footer />
       </div>
