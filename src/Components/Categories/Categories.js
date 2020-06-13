@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import CategoriesSlider from './CategoriesSlider'
+// import CategoriesSlider from './CategoriesSlider'
 import SearchCategory from './SearchCategory'
 import CategoriesList from './CategoriesList'
 import WhiteArticles from '../../assets/images/icons/white-articles.png'
 import ImgCategories from '../../assets/images/categories.png'
-import ImgSrc from '../../assets/images/icons/categories/1.png'
+// import ImgSrc from '../../assets/images/icons/categories/1.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -59,23 +59,23 @@ const Categories = () => {
     //     })
     // });
 
-    const Suggestions = [
-        {id: 1, title: 'Outdoor Wedding Venues', iconSrc: ImgSrc},
-        {id: 2, title: 'Wedding Dresses', iconSrc: ImgSrc},
-        {id: 3, title: 'Rings', iconSrc: ImgSrc},
-        {id: 4, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 5, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 6, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 7, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 8, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 9, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 10, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 11, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 12, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 13, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 14, title: 'Videographers', iconSrc: ImgSrc},
-        {id: 15, title: 'Videographers', iconSrc: ImgSrc}
-    ]
+    // const Suggestions = [
+    //     {id: 1, title: 'Outdoor Wedding Venues', iconSrc: ImgSrc},
+    //     {id: 2, title: 'Wedding Dresses', iconSrc: ImgSrc},
+    //     {id: 3, title: 'Rings', iconSrc: ImgSrc},
+    //     {id: 4, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 5, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 6, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 7, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 8, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 9, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 10, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 11, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 12, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 13, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 14, title: 'Videographers', iconSrc: ImgSrc},
+    //     {id: 15, title: 'Videographers', iconSrc: ImgSrc}
+    // ]
 
     
     return(

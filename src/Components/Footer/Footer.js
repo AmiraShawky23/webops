@@ -76,11 +76,11 @@ const Footer = () => {
                 </Icons>
             </Media>
             <CopyRight>
-                <p>© Copyright <a href="#">Plus360</a>. All Rights Reserved</p>
+                <p>© Copyright <a href="https://reactjs.org/">Plus360</a>. All Rights Reserved</p>
             </CopyRight>
             <Terms>
-                <a href='#'>Terms & Conditions</a> 
-                <a href='#'>Privacy Policy</a> 
+                <a href='https://reactjs.org/'>Terms & Conditions</a> 
+                <a href='https://reactjs.org/'>Privacy Policy</a> 
             </Terms>
         </FooterStyle>
     )

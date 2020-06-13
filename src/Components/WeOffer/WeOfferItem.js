@@ -77,7 +77,7 @@ const WeOfferItem = ({list}) => {
                             <Item>
                                 <h4>{listItem.title}</h4>
                                 <p>{listItem.text}</p>
-                                <a href="#">{listItem.link}</a>
+                                <a href="https://reactjs.org/">{listItem.link}</a>
                             </Item>
                         </WeOfferItemStyle>
                     )

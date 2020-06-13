@@ -29,10 +29,9 @@ const H4 = styled.h4`
 `
 
 const CategoryImgBox = ({list}) => {
-    console.log(list.imgSrc)
     return(
         <ImgContainerStyles>
-            <Link to={list.link}>
+            <Link to={'/' + list.link}>
                 <Img>
                     <img src={list.imgSrc} alt=""/>
                 </Img>

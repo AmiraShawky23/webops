@@ -50,7 +50,7 @@ const Path = ({current, next}) => {
                     return (
                         <Prev key={prevItem.id}>
                             <PrevH2>
-                                <Link>
+                                <Link to={'/' + prevItem.link}>
                                     {prevItem.text}
                                 </Link>
                             </PrevH2>

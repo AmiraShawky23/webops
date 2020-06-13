@@ -70,16 +70,24 @@ const Iocn = styled.div`
     }
 `
 
-const ImgDetails = ({imgSrc, title, text, name, link, faceLink, twitterLink}) => {
+const ImgDetails = (props, {imgSrc, title, text, name, link, faceLink, twitterLink}) => {
     const related = [
-        {id: 1, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
-        {id: 2, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
-        {id: 3, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
-        {id: 4, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
-        {id: 5, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
-        {id: 6, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
-        {id: 7, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 1, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
+        {id: 2, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
+        {id: 3, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
+        {id: 4, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
+        {id: 5, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
+        {id: 6, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
+        {id: 7, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
     ]
+    const [Img, setImg] = useState('photo_1');
+
+    let id = props.match.params.photo_id;
+
+    useEffect(() => {
+        setImg(id);
+    }, [id]);
+
     return (
         <ImgDetailsStyles>
             <Path />

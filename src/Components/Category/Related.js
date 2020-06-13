@@ -64,7 +64,7 @@ const Related = ({list}) => {
                     list && list.map(listItem => {
                         return (
                             <ImgContainerStyles key={listItem.id}>
-                                <Link to={listItem.link}>
+                                <Link to={'/' + listItem.link}>
                                     <Img>
                                         <img src={listItem.imgSrc} alt=""/>
                                     </Img>
