@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import Related from './Related';
 import Img1 from '../../assets/images/category/image_1.jpeg'
+import Path from '../Path/Path';
 
 const ImgDetailsStyles = styled.div`
     width: 100%;
@@ -71,16 +72,17 @@ const Iocn = styled.div`
 
 const ImgDetails = ({imgSrc, title, text, name, link, faceLink, twitterLink}) => {
     const related = [
-        {id: 1, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
-        {id: 2, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
-        {id: 3, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
-        {id: 4, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
-        {id: 5, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
-        {id: 6, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
-        {id: 7, title: 'Special photoshoot', imgSrc: {Img1}, link: '/photo_1'},
+        {id: 1, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 2, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 3, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 4, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 5, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 6, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
+        {id: 7, title: 'Special photoshoot', imgSrc: Img1, link: '/photo_1'},
     ]
     return (
         <ImgDetailsStyles>
+            <Path />
             <Container>
                 <ImgContainer>
                     <img src={imgSrc} alt=""/>

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import styled from 'styled-components' 
-import Img1 from '../../assets/images/category/image_1.jpeg'
+import { Link } from 'react-router-dom';
 
 const RelatedStyles = styled.div`
     width: 100%;
@@ -15,9 +14,17 @@ const ImgsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
-const ImgContainer = styled.div`
+const H2 = styled.h2`
+    font-size: 2rem;
+    line-height: 1.42;
+    margin: 0;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: black;
+`
+const ImgContainerStyles = styled.div`
     width: 24%;
-    margin: 0.3rem;
+    margin-right: 0.3rem;
     margin-top: 1rem;
 
     @media (max-width: 991px) {
@@ -27,6 +34,7 @@ const ImgContainer = styled.div`
     @media (max-width: 768px) {
         width: 48%;
     }
+
 `
 const Img = styled.div`
     height: 230px;
@@ -38,14 +46,6 @@ const Img = styled.div`
     @media (max-width: 768px) {
         height: 120px;
     }
-`
-const H2 = styled.h2`
-    font-size: 2rem;
-    line-height: 1.42;
-    margin: 0;
-    margin-bottom: 2rem;
-    font-weight: bold;
-    color: black;
 `
 const H4 = styled.h4`
     font-size: 1rem;
@@ -63,16 +63,16 @@ const Related = ({list}) => {
                 {
                     list && list.map(listItem => {
                         return (
-                            <ImgContainer key={listItem.id}>
+                            <ImgContainerStyles key={listItem.id}>
                                 <Link to={listItem.link}>
                                     <Img>
-                                        <img src={Img1} alt=""/>
+                                        <img src={listItem.imgSrc} alt=""/>
                                     </Img>
                                     <H4>
                                         {listItem.title}
                                     </H4>
                                 </Link>
-                            </ImgContainer>
+                            </ImgContainerStyles>
                         )
                     })
                 }

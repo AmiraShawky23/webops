@@ -16,6 +16,9 @@ const Main = styled.main`
   margin: 0 auto;
   margin-top: 7rem;
 
+  @media (max-width: 1400px) {
+      width: 80%;
+  }
   @media (max-width: 922px) {
       width: 90%;
   }
