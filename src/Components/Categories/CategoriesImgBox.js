@@ -102,18 +102,18 @@ const H3 = styled.h3`
 `
 
 
-const CategoriesImgBox = ({title, iconSrc, imgSrc}) => {
+const CategoriesImgBox = ({list}) => {
     
     return(
-        <CategoriesBox imgSrc={imgSrc} >
-            <Link to='/category_1'>
+        <CategoriesBox imgSrc={list.image} >
+            <Link to={'/' + list.id}>
                 <Overlay />
                 <Title>
                     <Img>
-                        <img src={iconSrc} alt=""/>
+                        <img src={list.icon} alt=""/>
                     </Img>
                     <H3>
-                        {title}
+                        {list.name}
                     </H3>
                 </Title>
                 <Box className='hide'>
@@ -121,7 +121,7 @@ const CategoriesImgBox = ({title, iconSrc, imgSrc}) => {
                         <FontAwesomeIcon icon={faHome} />
                     </Icon>
                     <BoxTitle>
-                        {title}
+                        {list.name}
                     </BoxTitle>
                 </Box>
             </Link>

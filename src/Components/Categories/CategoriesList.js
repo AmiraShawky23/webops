@@ -15,7 +15,7 @@ const CategoriesList = ({list}) => {
             {
                 list && list.map(listItem => {
                     return (
-                        <CategoriesImgBox key={listItem.id} title={listItem.title} iconSrc={listItem.iconSrc} imgSrc={listItem.imgSrc} />
+                        <CategoriesImgBox key={listItem.id} list={listItem} />
                     )
                 })
             }
