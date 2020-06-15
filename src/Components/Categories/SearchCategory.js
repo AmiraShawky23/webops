@@ -32,6 +32,14 @@ const Input = styled.input`
     &:focus {
         outline: none;
     }
+
+    @media (max-width: 922px) {
+        font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+        font-size: 0.8rem;
+        margin-top: 1px;
+    }
 `
 
 const SearchCategory = () => {

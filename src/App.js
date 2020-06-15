@@ -19,6 +19,9 @@ const Main = styled.main`
   @media (max-width: 1400px) {
       width: 80%;
   }
+  @media (max-width: 1200px) {
+      width: 92%;
+  }
   @media (max-width: 922px) {
       width: 90%;
   }

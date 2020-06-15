@@ -1,6 +1,6 @@
 import {
   configureStore,
-  getDefaultMiddleware
+  // getDefaultMiddleware
 } from "@reduxjs/toolkit";
 
 // import counterReducer from '../features/counter/counterSlice';
