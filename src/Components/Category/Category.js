@@ -5,8 +5,8 @@ import CategoryImgGallery from './CategoryImgGallery'
 import SearchImg from './SearchImg'
 import Img1 from '../../assets/images/category/image_1.jpeg'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategory, categorySelector } from './CategorySlicer'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { fetchCategory, categorySelector } from './CategorySlicer'
 
 
 
@@ -27,22 +27,22 @@ const Container = styled.div`
 
 const Category = (props) => {
     
-    const dispatch = useDispatch()
-    const { category} = useSelector(
-        categorySelector
-    )
+    // const dispatch = useDispatch()
+    // const { category} = useSelector(
+    //     categorySelector
+    // )
     const [CategoryId, setCategoryId] = useState('category_1');
 
     let id = props.match.params.category_id;
 
     useEffect(() => {
         setCategoryId(id);
-        dispatch(fetchCategory(id))
+        // dispatch(fetchCategory(id))
     }, [id]);
 
-    const renderCategory = () => {
-        return category
-    }
+    // const renderCategory = () => {
+    //     return category
+    // }
 
     const list = [
         {id: 1, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},

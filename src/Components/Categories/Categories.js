@@ -7,8 +7,8 @@ import WhiteArticles from '../../assets/images/icons/white-articles.png'
 import ImgCategories from '../../assets/images/categories.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategories, categoriesSelector } from './CategoriesSlicer'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { fetchCategories, categoriesSelector } from './CategoriesSlicer'
 import ImgSrc from '../../assets/images/icons/categories/1.png'
 
 
