@@ -8,6 +8,10 @@ const BackdropStyle = styled.div`
     position: fixed;
     left: 0;
     top: 7rem;
+    
+  @media (max-width: 922px) {
+    top: 10rem;
+  }
 `
 
 const Backdrop = (props) => {

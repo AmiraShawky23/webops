@@ -24,6 +24,10 @@ const Nav = styled.nav`
     z-index: 300;
     background: ${'url(' + bg + ')'} no-repeat center center fixed;
     background-size: cover;
+    
+  @media (max-width: 922px) {
+    top: 10rem;
+  }
 `
 const SidebarLi = styled.li`
     width: 50%;
