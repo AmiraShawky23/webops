@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import CategoriesSlider from './CategoriesSlider'
 import SearchCategory from './SearchCategory'
 import CategoriesList from './CategoriesList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { fetchCategories, categoriesSelector } from './CategoriesSlicer'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategories, categoriesSelector} from '../../app/slicers/categoriesSlicer'
+
 
 const CategoriesStyles = styled.div`
     width: 100%;
@@ -68,70 +68,49 @@ const MySlider = styled.div`
   margin-top: 1.2rem;
 `
 
-const Categories = (props) => {
-    
-    // const dispatch = useDispatch()
-    // const { categories, loading, hasErrors } = useSelector(categoriesSelector)
+const Categories = () => {
 
-    // useEffect(() => {
-    //     dispatch(fetchCategories())
-    // }, [dispatch])
+  const dispatch = useDispatch()
+  const { categories } = useSelector(categoriesSelector)	
+		
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [dispatch])
 
-    // const renderCategories = () => {
-    //     if (loading || hasErrors) return []
-    
-    //     return categories
-    // }
 
-    // const categoriesList = renderCategories();
-    
-    // const [Suggestions, setSuggestions] = useState([]);
-    // useEffect(() => {
-    //     fetch('').then(res=> res.json()).then(data=> {
-    //         setSuggestions(data);
-    //     })
-    // });
-
-    
-    const [sliderOpen, setSliderOpen] = useState(false);
-    
-    const sliderClickHandler = () => {
-      setSliderOpen(!sliderOpen);
-    }
-
-    let sliderClasses = ['my-slider'];
-    
-    if (sliderOpen) {
-        sliderClasses = [...sliderClasses, 'slider-open']
-    }
-
-    return(
-        <CategoriesStyles>
-            <FindContainer>
-                <Find>
-                    <Container onClick={sliderClickHandler} >
-                        <H5>
-                            Find categories here
-                        </H5>
-                        <FontAwesomeIcon icon={faChevronDown} />
-                    </Container>
-                    <SearchContainer>
-                        <SearchCategory />
-                    </SearchContainer>
-                </Find>
-                <MySlider className={sliderClasses.join(' ')}>
-                  <CategoriesSlider Suggestions={props.categories.categories}/>
-                </MySlider>
-            </FindContainer>
-            <CategoriesList list={props.categories.categories}/>
-        </CategoriesStyles>
-    )
-}
-
-const mapStateToProps = (state) => {
-  return{
-    categories: state.categories
+  const [sliderOpen, setSliderOpen] = useState(false);
+  
+  const sliderClickHandler = () => {
+    setSliderOpen(!sliderOpen);
   }
+
+  let sliderClasses = ['my-slider'];
+  
+  if (sliderOpen) {
+      sliderClasses = [...sliderClasses, 'slider-open']
+  }
+
+  return(
+      <CategoriesStyles>
+          <FindContainer>
+              <Find>
+                  <Container onClick={sliderClickHandler} >
+                      <H5>
+                          Find categories here
+                      </H5>
+                      <FontAwesomeIcon icon={faChevronDown} />
+                  </Container>
+                  <SearchContainer>
+                      <SearchCategory />
+                  </SearchContainer>
+              </Find>
+              <MySlider className={sliderClasses.join(' ')}>
+                <CategoriesSlider Suggestions={categories}/>
+              </MySlider>
+          </FindContainer>
+          <CategoriesList list={categories}/>
+      </CategoriesStyles>
+  )
 }
 
-export default connect(mapStateToProps)(Categories)
+export default Categories

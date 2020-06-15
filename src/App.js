@@ -86,7 +86,7 @@ function App() {
   
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
-    }, []); // Empty array ensures that effect is only run on mount and unmount
+    }, [isClient]); // Empty array ensures that effect is only run on mount and unmount
   
     return windowSize;
   }
@@ -120,7 +120,7 @@ function App() {
             <Route path='/' component={Category} exact />
             <Route path='/categories' component={Categories} />
             <Route path='/:category_id' component={Category} />
-            <Route path='/:category_id/:photo_id' component={ImgDetails} />
+            <Route path='/:photo_id' component={ImgDetails} />
           </Switch>
         </Main>
         <ScrollTop />

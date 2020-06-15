@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Path from '../Path/Path'
 import CategoryImgGallery from './CategoryImgGallery'
 import SearchImg from './SearchImg'
-import { connect } from 'react-redux'
-
-// import { useDispatch, useSelector } from 'react-redux'
-// import { fetchCategory, categorySelector } from './CategorySlicer'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategory, categorySelector } from '../../app/slicers/categorySlicer'
 
 
 
@@ -27,43 +25,33 @@ const Container = styled.div`
 
 const Category = (props) => {
     
-    // const dispatch = useDispatch()
-    // const { category} = useSelector(
-    //     categorySelector
-    // )
-    const [CategoryId, setCategoryId] = useState('category_1');
-
     let id = props.match.params.category_id;
+    id = id.replace("category_","");
 
+    
+    const dispatch = useDispatch()
+    const { category } = useSelector(categorySelector)	
+            
     useEffect(() => {
-        setCategoryId(id);
-        // dispatch(fetchCategory(id))
-    }, [id]);
+        dispatch(fetchCategory(id))
+    }, [dispatch,id])
 
-    // const renderCategory = () => {
-    //     return category
-    // }
 
     const pathList = [
         { id: 1, text: 'gallery', link: 'category'},
         { id: 2, text: 'wedding ideas', link: 'category'}
     ]
-    console.log(props)
+
     return(
         <CategoryStyles>
             <Path current={pathList} next='Vintage photoshoot' />
             <Container>
                 <SearchImg />
-                <CategoryImgGallery list={props.category.category}/>
+                <CategoryImgGallery list={category}/>
             </Container>
             {/* <ImgDetails imgSrc={Img1} title='Vintage photoshoot' text='A vintage-themed wedding photoshoot for the bride and groom.' name='Gihad Belasy' link='https://google.com/' faceLink='https://www.facebook.com/' twitterLink='https://twitter.com/home' /> */}
         </CategoryStyles>
     )
 }
-const mapStateToProps = (state) => {
-    return{
-      category: state.category
-    }
-  }
 
-export default connect(mapStateToProps)(Category)
+export default Category
