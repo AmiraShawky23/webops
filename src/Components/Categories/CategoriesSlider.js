@@ -21,6 +21,7 @@ const H6 = styled.h6`
 
 const CategoriesSlider = ({Suggestions}) => {
 
+    
     function useWindowSize() {
         const isClient = typeof window === 'object';
       

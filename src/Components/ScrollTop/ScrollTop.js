@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { motion } from "framer-motion";
+
 
 const Scroll = styled.div`
     position: fixed;
@@ -26,10 +28,34 @@ const Scroll = styled.div`
 `
 
 const ScrollTop = () => {
+    const [lastYPos, setLastYPos] = React.useState(0);
+    const [shouldShowActions, setShouldShowActions] = React.useState(false);
+
+    React.useEffect(() => {
+        function handleScroll() {
+        const yPos = window.scrollY;
+        const isScrolledDown = yPos > 100;
+
+        setShouldShowActions(isScrolledDown);
+            setLastYPos(yPos);
+        }
+
+        window.addEventListener("scroll", handleScroll, false);
+
+        return () => {
+        window.removeEventListener("scroll", handleScroll, false);
+        };
+    }, [lastYPos]);
     return(
-        <Scroll>
-            <FontAwesomeIcon icon={faChevronUp} />
-        </Scroll>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: shouldShowActions ? 1 : 0 }}
+            transition={{ opacity: { duration: 0.2 } }}
+        >
+            <Scroll>
+                <FontAwesomeIcon icon={faChevronUp} />
+            </Scroll>
+        </motion.div>
     )
 }
 
