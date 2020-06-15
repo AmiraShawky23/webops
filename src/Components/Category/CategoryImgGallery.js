@@ -12,12 +12,13 @@ const ImgsContainer = styled.div`
     }
 `
 const CategoryImgGallery = ({list}) => {
+    const listOfPhotos = list.photos
     return(
         <ImgsContainer>
             {
-                list && list.map(listItem => {
+                listOfPhotos && listOfPhotos.map(listItem => {
                     return (
-                        <CategoryImgBox key={listItem.id} list={listItem} />
+                        <CategoryImgBox key={listItem.id} categoryId={list.id} list={listItem} />
                     )
                 })
             }

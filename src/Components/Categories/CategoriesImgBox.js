@@ -14,9 +14,11 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 //     position: 'relative',
 //     background: props.imgSrc ? 'url(' + props.imgSrc + ')' : 'url(../../assets/images/background.jpg)',
 // }))
+
     
 const CategoriesBox = styled.div`  
     width: 32%;
+    margin: 0 0.3rem;
     height: 230px;
     background-position-x: center;
     background-size: cover;
@@ -107,7 +109,7 @@ const CategoriesImgBox = ({list}) => {
     
     return(
         <CategoriesBox imgSrc={list.image} >
-            <Link to={'/categories/category_' + list.id}>
+            <Link to={'/category_' + list.id}>
                 <Overlay />
                 <Title>
                     <Img>

@@ -8,6 +8,7 @@ const BackdropStyle = styled.div`
     position: fixed;
     left: 0;
     top: 7rem;
+    z-index: 200;
     
   @media (max-width: 922px) {
     top: 10rem;

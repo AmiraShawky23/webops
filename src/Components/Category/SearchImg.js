@@ -55,10 +55,14 @@ const Input = styled.input`
         line-height: 100%;
     }
 `
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+}
 // function to handle form submite with the category name (call back function to send request to fetch any category name has the searched name)
 const SearchImg = () => {
     return(
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Buttons>
                 {/* link to the same page with no filter */}
                 <Link to='/' >

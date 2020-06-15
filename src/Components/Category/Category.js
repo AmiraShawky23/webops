@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Path from '../Path/Path'
 import CategoryImgGallery from './CategoryImgGallery'
 import SearchImg from './SearchImg'
-import Img1 from '../../assets/images/category/image_1.jpeg'
+import { connect } from 'react-redux'
 
 // import { useDispatch, useSelector } from 'react-redux'
 // import { fetchCategory, categorySelector } from './CategorySlicer'
@@ -44,30 +44,26 @@ const Category = (props) => {
     //     return category
     // }
 
-    const list = [
-        {id: 1, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 2, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 3, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 4, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 5, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 6, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 7, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-    ]
-
     const pathList = [
         { id: 1, text: 'gallery', link: 'category'},
         { id: 2, text: 'wedding ideas', link: 'category'}
     ]
+    console.log(props)
     return(
         <CategoryStyles>
             <Path current={pathList} next='Vintage photoshoot' />
             <Container>
                 <SearchImg />
-                <CategoryImgGallery list={list}/>
+                <CategoryImgGallery list={props.category.category}/>
             </Container>
             {/* <ImgDetails imgSrc={Img1} title='Vintage photoshoot' text='A vintage-themed wedding photoshoot for the bride and groom.' name='Gihad Belasy' link='https://google.com/' faceLink='https://www.facebook.com/' twitterLink='https://twitter.com/home' /> */}
         </CategoryStyles>
     )
 }
+const mapStateToProps = (state) => {
+    return{
+      category: state.category
+    }
+  }
 
-export default Category
+export default connect(mapStateToProps)(Category)

@@ -19,6 +19,9 @@ const Img = styled.div`
     overflow: hidden;
     display: flex;
     align-items: center;
+    img {
+        height: max-content;
+    }
 `
 const H4 = styled.h4`
     font-size: 1rem;
@@ -28,13 +31,13 @@ const H4 = styled.h4`
     color: black;
 `
 
-const CategoryImgBox = ({list}) => {
+const CategoryImgBox = ({categoryId, list}) => {
     return(
         <ImgContainerStyles>
         {/* '/categories/category_' + id + '/' + list.link */}
-            <Link to={'/categories/category_' + list.link}>
+            <Link to={'/category_' + categoryId + '/photo_' + list.id}>
                 <Img>
-                    <img src={list.imgSrc} alt=""/>
+                    <img src={list.image} alt=""/>
                 </Img>
                 <H4>
                     {list.title}

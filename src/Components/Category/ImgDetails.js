@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import Related from './Related';
-import Img1 from '../../assets/images/category/image_1.jpeg'
+// import Img1 from '../../assets/images/category/image_1.jpeg'
 import Path from '../Path/Path';
+import { connect } from 'react-redux';
 
 const ImgDetailsStyles = styled.div`
     width: 100%;
@@ -70,20 +71,15 @@ const Iocn = styled.div`
     }
 `
 
-const ImgDetails = (props, {imgSrc, title, text, name, link, faceLink, twitterLink}) => {
-    const related = [
-        {id: 1, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 2, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 3, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 4, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 5, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 6, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-        {id: 7, title: 'Special photoshoot', imgSrc: Img1, link: 'photo_1'},
-    ]
-    const [Img, setImg] = useState('photo_1');
+const ImgDetails = (props) => {
+    
+    const [Img, setImg] = useState('');
 
     let id = props.match.params.photo_id;
+    
+    const photo = props.category.category.photos[id];
 
+    console.log('amira',id)
     useEffect(() => {
         setImg(id);
     }, [id]);
@@ -93,31 +89,36 @@ const ImgDetails = (props, {imgSrc, title, text, name, link, faceLink, twitterLi
             <Path />
             <Container>
                 <ImgContainer>
-                    <img src={imgSrc} alt=""/>
+                    <img src={photo.image} alt=""/>
                 </ImgContainer>
                 <ContentContainer>
-                    <H2>{title}</H2>
-                    <P>{text}</P>
+                    <H2>{photo.title}</H2>
+                    <P>{photo.paragraph}</P>
                     <PhotographerLink>
-                        <a href={link}>{name}</a>
+                        <a href={photo.author_link}>{photo.author}</a>
                     </PhotographerLink>
                     <IconContainer>
                         <Iocn>
-                            <a href={faceLink}>
+                            <a href={photo.author_facebook}>
                                 <FontAwesomeIcon icon={faFacebookF} />
                             </a>                    
                         </Iocn>
                         <Iocn>
-                            <a href={twitterLink}>
+                            <a href={photo.author_twitter}>
                                 <FontAwesomeIcon icon={faTwitter} />
                             </a> 
                         </Iocn>
                     </IconContainer>
                 </ContentContainer>
             </Container>
-            <Related list={related} />
+            <Related list={props.category.category.photos} />
         </ImgDetailsStyles>
     )
 }
+const mapStateToProps = (state) => {
+    return{
+        category: state.category
+    }
+  }
 
-export default ImgDetails;
+export default connect(mapStateToProps)(ImgDetails);

@@ -58,7 +58,11 @@ img {
   opacity: 1;
   animation: show 1s;
 }
-.slick-slider {
+.slick-track {
+  width: 100% !important;
+  display: flex !important;
+}
+/* .slick-slider {
   width: 94%;
 }
 @media only screen and (max-width: 992px) { 
@@ -70,7 +74,7 @@ img {
   .slick-slider {
     width: 85%;
   }
-}
+} */
 
 @keyframes show {
   0% {

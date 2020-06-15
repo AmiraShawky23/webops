@@ -13,7 +13,17 @@ const SliderItem = styled.div`
     text-align: center;
 `
 const Img = styled.div`
-    padding: 0 1rem;
+    padding: 0 2.3rem;
+
+    @media (max-width: 768px) {
+        padding: 0 5rem;
+    }
+    @media (max-width: 662px) {
+        padding: 0 3rem;
+    }
+    @media (max-width: 440px) {
+        padding: 0 1rem;
+    }
 `
 const H6 = styled.h6`
     color: #fff;
@@ -90,12 +100,12 @@ const CategoriesSlider = ({Suggestions}) => {
                 Suggestions && Suggestions.map(suggestion => {
                     return(
                         <SliderItem key={suggestion.id}>
-                            <Link to={`/categories/category_ + ${suggestion.id}`}>
+                            <Link to={`/category_${suggestion.id}`}>
                                 <Img>
-                                    <img src={suggestion.iconSrc} alt=""/>
+                                    <img src={suggestion.icon} alt=""/>
                                 </Img>
                                 <H6>
-                                    {suggestion.title}
+                                    {suggestion.name}
                                 </H6>
                             </Link>
                         </SliderItem>

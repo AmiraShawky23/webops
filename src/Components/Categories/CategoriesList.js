@@ -5,8 +5,8 @@ import styled from 'styled-components'
 const CategoriesListStyle = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
     margin-bottom: 2rem;
+    justify-content: center;
 
     @media (max-width: 991px) {
         flex-wrap: wrap;

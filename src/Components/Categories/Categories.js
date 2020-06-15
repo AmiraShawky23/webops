@@ -3,13 +3,11 @@ import styled from 'styled-components'
 import CategoriesSlider from './CategoriesSlider'
 import SearchCategory from './SearchCategory'
 import CategoriesList from './CategoriesList'
-// import WhiteArticles from '../../assets/images/icons/white-articles.png'
-// import ImgCategories from '../../assets/images/categories.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { fetchCategories, categoriesSelector } from './CategoriesSlicer'
-import My from '../../assets/images/icons/categories/1.png'
+import { connect } from 'react-redux'
 
 const CategoriesStyles = styled.div`
     width: 100%;
@@ -66,11 +64,11 @@ const H5 = styled.h5`
 `
 const MySlider = styled.div`
   background: black;
-  padding: 1.5rem 2rem 0rem 2rem;
+  padding-top: 1.5rem;
   margin-top: 1.2rem;
 `
 
-const Categories = () => {
+const Categories = (props) => {
     
     // const dispatch = useDispatch()
     // const { categories, loading, hasErrors } = useSelector(categoriesSelector)
@@ -86,89 +84,6 @@ const Categories = () => {
     // }
 
     // const categoriesList = renderCategories();
-    const categoriesList = [
-        { "id": 1,
-      "name": "Wedding Ideas", 
-      "icon": "https://res.cloudinary.com/megoox97/image/upload/v1592074635/white-articles_rpqt71.png", 
-      "image":"https://res.cloudinary.com/megoox97/image/upload/v1592074073/amira2_cjjz2s.jpg", 
-      "photos":[
-        {
-          "id":"1",
-          "title":"Vintage photoshoot",
-          "paragraph": "A vintage-themed wedding photoshoot for the bride and groom.",
-          "image":"https://res.cloudinary.com/megoox97/image/upload/v1592074071/amira4_lvqy65.jpg",
-          "author":"Gihad Belasy",
-          "author_link":"https://twitter.com/",
-          "author_facebook":"https://www.facebook.com/",
-          "author_twitter":"https://twitter.com/"
-        },
-        {
-          "id":"2",
-          "title":"Special photoshoot",
-          "paragraph": "A special photoshoot for the bride.",
-          "image":"https://res.cloudinary.com/megoox97/image/upload/v1592073972/amira1_xq6dxo.jpg",
-          "author":"Gihad Belasy",
-          "author_link":"https://twitter.com/",
-          "author_facebook":"https://www.facebook.com/",
-          "author_twitter":"https://twitter.com/"
-        },
-        {
-          "id":"3",
-          "title":"Pink/white bouquet",
-          "paragraph": "A special photoshoot for the bride.",
-          "image":"https://res.cloudinary.com/megoox97/image/upload/v1592073972/amira1_xq6dxo.jpg",
-          "author":"Gihad Belasy",
-          "author_link":"https://twitter.com/",
-          "author_facebook":"https://www.facebook.com/",
-          "author_twitter":"https://twitter.com/"
-        },
-        {
-          "id":"4",
-          "title":"Wedding cupcakes",
-          "paragraph": "A special photoshoot for the bride.",
-          "image":"https://res.cloudinary.com/megoox97/image/upload/v1592073972/amira1_xq6dxo.jpg",
-          "author":"Gihad Belasy",
-          "author_link":"https://twitter.com/",
-          "author_facebook":"https://www.facebook.com/",
-          "author_twitter":"https://twitter.com/"
-        }
-      ]
-    },
-    { "id": 2,
-      "name": "Rings", 
-      "icon": "https://res.cloudinary.com/megoox97/image/upload/v1592074635/white-articles_rpqt71.png", 
-      "image":"https://res.cloudinary.com/megoox97/image/upload/v1592074073/amira2_cjjz2s.jpg", 
-      "photos":[
-        {
-          "id":"1",
-          "title":"Vintage photoshoot",
-          "paragraph": "A vintage-themed wedding photoshoot for the bride and groom.",
-          "image":"https://res.cloudinary.com/megoox97/image/upload/v1592074071/amira4_lvqy65.jpg",
-          "author":"Gihad Belasy",
-          "author_link":"https://twitter.com/",
-          "author_facebook":"https://www.facebook.com/",
-          "author_twitter":"https://twitter.com/"
-        }
-      ]
-    },
-    { "id": 3,
-      "name": "Something", 
-      "icon": "https://res.cloudinary.com/megoox97/image/upload/v1592074635/white-articles_rpqt71.png", 
-      "image":"https://res.cloudinary.com/megoox97/image/upload/v1592074073/amira2_cjjz2s.jpg", 
-      "photos":[
-        {
-          "id":"1",
-          "title":"Vintage photoshoot",
-          "paragraph": "A vintage-themed wedding photoshoot for the bride and groom.",
-          "image":"https://res.cloudinary.com/megoox97/image/upload/v1592074071/amira4_lvqy65.jpg",
-          "author":"Gihad Belasy",
-          "author_link":"https://twitter.com/",
-          "author_facebook":"https://www.facebook.com/",
-          "author_twitter":"https://twitter.com/"
-        }
-      ]
-    }
-    ];
     
     // const [Suggestions, setSuggestions] = useState([]);
     // useEffect(() => {
@@ -177,23 +92,7 @@ const Categories = () => {
     //     })
     // });
 
-    const Suggestions = [
-        {id: 1, title: 'Outdoor Wedding Venues', iconSrc: My},
-        {id: 2, title: 'Wedding Dresses', iconSrc: My},
-        {id: 3, title: 'Rings', iconSrc: My},
-        {id: 4, title: 'Videographers', iconSrc: My},
-        {id: 5, title: 'Videographers', iconSrc: My},
-        {id: 6, title: 'Videographers', iconSrc: My},
-        {id: 7, title: 'Videographers', iconSrc: My},
-        {id: 8, title: 'Videographers', iconSrc: My},
-        {id: 9, title: 'Videographers', iconSrc: My},
-        {id: 10, title: 'Videographers', iconSrc: My},
-        {id: 11, title: 'Photographers', iconSrc: My},
-        {id: 12, title: 'Videographers', iconSrc: My},
-        {id: 13, title: 'Videographers', iconSrc: My},
-        {id: 14, title: 'Videographers', iconSrc: My},
-        {id: 15, title: 'Videographers', iconSrc: My}
-    ]
+    
     const [sliderOpen, setSliderOpen] = useState(false);
     
     const sliderClickHandler = () => {
@@ -221,12 +120,18 @@ const Categories = () => {
                     </SearchContainer>
                 </Find>
                 <MySlider className={sliderClasses.join(' ')}>
-                  <CategoriesSlider Suggestions={Suggestions}/>
+                  <CategoriesSlider Suggestions={props.categories.categories}/>
                 </MySlider>
             </FindContainer>
-            <CategoriesList list={categoriesList}/>
+            <CategoriesList list={props.categories.categories}/>
         </CategoriesStyles>
     )
 }
 
-export default Categories
+const mapStateToProps = (state) => {
+  return{
+    categories: state.categories
+  }
+}
+
+export default connect(mapStateToProps)(Categories)

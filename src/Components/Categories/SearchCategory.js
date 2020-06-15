@@ -42,9 +42,13 @@ const Input = styled.input`
     }
 `
 
+const handleSubmit = (e) => {
+    e.preventDefault();
+}
+
 const SearchCategory = () => {
     return(
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Input type="text" placeholder='search' />
         </Form>
     )

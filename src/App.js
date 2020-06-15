@@ -105,9 +105,9 @@ function App() {
         {
           size.width > 768 &&
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: shouldShowActions ? 0 : 1 }}
-            transition={{ opacity: { duration: 0.3 } }}
+            initial={{ opacity: 0, display: 'none' }}
+            animate={{ opacity: shouldShowActions ? 0 : 1, display: shouldShowActions ? 'none' : 'block'  }}
+            transition={{ opacity: { duration: 0.2 }, display: { duration: 0.3 } }}
           >
             <NavbarScrolled drawerClickHandler={drawerToggleClickHandler}/>
           </motion.div>
@@ -119,8 +119,8 @@ function App() {
             {/* remember to create a theme for displaying imgs if needed */}
             <Route path='/' component={Category} exact />
             <Route path='/categories' component={Categories} />
-            <Route path='/categories/:category_id' component={Category} />
-            <Route path='/categories/:category_id/:photo_id' component={ImgDetails} />
+            <Route path='/:category_id' component={Category} />
+            <Route path='/:category_id/:photo_id' component={ImgDetails} />
           </Switch>
         </Main>
         <ScrollTop />
