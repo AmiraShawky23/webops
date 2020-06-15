@@ -56,8 +56,8 @@ function App() {
             {/* remember to create a theme for displaying imgs if needed */}
             <Route path='/' component={Category} exact />
             <Route path='/categories' component={Categories} />
-            <Route path='/:category_id' component={Category} />
-            <Route path='/:photo_id' component={ImgDetails} />
+            <Route path='/categories/:category_id' component={Category} />
+            <Route path='/categories/:category_id/:photo_id' component={ImgDetails} />
           </Switch>
         </Main>
         <ScrollTop onClick={executeScroll} />

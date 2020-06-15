@@ -106,7 +106,7 @@ const CategoriesImgBox = ({list}) => {
     
     return(
         <CategoriesBox imgSrc={list.image} >
-            <Link to={'/' + list.id}>
+            <Link to={'/categories/category_' + list.id}>
                 <Overlay />
                 <Title>
                     <Img>

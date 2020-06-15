@@ -31,7 +31,8 @@ const H4 = styled.h4`
 const CategoryImgBox = ({list}) => {
     return(
         <ImgContainerStyles>
-            <Link to={'/' + list.link}>
+        {/* '/categories/category_' + id + '/' + list.link */}
+            <Link to={'/categories/category_' + list.link}>
                 <Img>
                     <img src={list.imgSrc} alt=""/>
                 </Img>

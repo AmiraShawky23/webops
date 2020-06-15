@@ -64,6 +64,7 @@ const Related = ({list}) => {
                     list && list.map(listItem => {
                         return (
                             <ImgContainerStyles key={listItem.id}>
+                                {/* /categories/category_' + id + '/' + link */}
                                 <Link to={'/' + listItem.link}>
                                     <Img>
                                         <img src={listItem.imgSrc} alt=""/>
