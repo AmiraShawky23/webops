@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop'
@@ -27,9 +27,6 @@ const Main = styled.main`
   }
 `
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
-
-
 function App() {
 
   let backdrop;
@@ -45,8 +42,6 @@ function App() {
     backdrop = <Backdrop click={backdropClickHandler} />
   }
 
-  const myRef = useRef(null)
-  const executeScroll = () => scrollToRef(myRef)
 
   return (
     <BrowserRouter>
@@ -63,7 +58,7 @@ function App() {
             <Route path='/categories/:category_id/:photo_id' component={ImgDetails} />
           </Switch>
         </Main>
-        <ScrollTop onClick={executeScroll} />
+        <ScrollTop />
         <WeOffer />
         <Footer />
       </div>

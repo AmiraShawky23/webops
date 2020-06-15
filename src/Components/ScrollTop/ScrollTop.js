@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
@@ -28,15 +28,27 @@ const Scroll = styled.div`
 `
 
 const ScrollTop = () => {
-    const [lastYPos, setLastYPos] = React.useState(0);
-    const [shouldShowActions, setShouldShowActions] = React.useState(false);
+    const [lastYPos, setLastYPos] = useState(0);
+    const [shouldShowActions, setShouldShowActions] = useState(false);
+    
+    const [scrollTop, setScrollTop] = useState(false);
 
-    React.useEffect(() => {
+    
+    useEffect(() => {
+        if(scrollTop) {
+            window.scrollTo(0,0);
+            setTimeout(() => {
+                setScrollTop(false);
+            }, 100);
+        }
+    });
+    
+    useEffect(() => {
         function handleScroll() {
-        const yPos = window.scrollY;
-        const isScrolledDown = yPos > 100;
+            const yPos = window.scrollY;
+            const isScrolledDown = yPos > 100;
 
-        setShouldShowActions(isScrolledDown);
+            setShouldShowActions(isScrolledDown);
             setLastYPos(yPos);
         }
 
@@ -46,13 +58,14 @@ const ScrollTop = () => {
         window.removeEventListener("scroll", handleScroll, false);
         };
     }, [lastYPos]);
+
     return(
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: shouldShowActions ? 1 : 0 }}
             transition={{ opacity: { duration: 0.2 } }}
         >
-            <Scroll>
+            <Scroll onClick={() => setScrollTop(true)}>
                 <FontAwesomeIcon icon={faChevronUp} />
             </Scroll>
         </motion.div>
