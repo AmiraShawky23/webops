@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Form = styled.form`
@@ -42,14 +42,22 @@ const Input = styled.input`
     }
 `
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-}
+const SearchCategory = (props) => {
 
-const SearchCategory = () => {
+    const [Val, setVal] = useState('');
+
+    const handleChange = (e) => {
+        setVal(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.searchHandle(Val)
+    }
+    
     return(
         <Form onSubmit={handleSubmit}>
-            <Input type="text" placeholder='search' />
+            <Input type="text" placeholder='search' onChange={handleChange} />
         </Form>
     )
 }

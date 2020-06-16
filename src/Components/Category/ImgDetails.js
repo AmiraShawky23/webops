@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components' 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import Related from './Related';
-// import Img1 from '../../assets/images/category/image_1.jpeg'
 import Path from '../Path/Path';
-import { connect } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux'
+// import { fetchPhoto, photoSelector } from '../../app/slicers/imgDetailsSlicer'
+
 
 const ImgDetailsStyles = styled.div`
     width: 100%;
@@ -72,22 +73,29 @@ const Iocn = styled.div`
 `
 
 const ImgDetails = (props) => {
-    
-    const [Img, setImg] = useState('');
 
-    let id = props.match.params.photo_id;
-    
-    const photo = props.category.category.photos[id];
+    let id = props.match.params.category_id;
+    id = id.replace("category_","");
 
-    console.log('amira',id)
-    useEffect(() => {
-        setImg(id);
-    }, [id]);
+    let photoid = props.match.params.photo_id;
+    photoid = photoid.replace("photo_","");
+
+    
+    // const dispatch = useDispatch()
+    // const { category } = useSelector(photoSelector)	
+    
+    // const filterCategory = category.filter(photo => photoid !== photo.id)
+    
+    // useEffect(() => {
+    //     dispatch(fetchPhoto(id,photoid))
+    // }, [dispatch,id,photoid])
+    
+    console.log('props: ',props)
 
     return (
         <ImgDetailsStyles>
             <Path />
-            <Container>
+            {/* <Container>
                 <ImgContainer>
                     <img src={photo.image} alt=""/>
                 </ImgContainer>
@@ -110,15 +118,9 @@ const ImgDetails = (props) => {
                         </Iocn>
                     </IconContainer>
                 </ContentContainer>
-            </Container>
-            <Related list={props.category.category.photos} />
+            </Container> */}
+            {/* <Related list={filterCategory} /> */}
         </ImgDetailsStyles>
     )
 }
-const mapStateToProps = (state) => {
-    return{
-        category: state.category
-    }
-  }
-
-export default connect(mapStateToProps)(ImgDetails);
+export default ImgDetails;

@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const Form = styled.form`
     display: flex;
@@ -17,17 +16,17 @@ const Form = styled.form`
 const Buttons = styled.div`
     display: flex;
     
-    a {
-        display: flex;
-        font-size: 0.8rem;
-        align-items: center;
-        text-align: center;
-        background-color: #fff;
-        color: black;
-        border: solid 1px black;
-        padding: 0 15px;
-    }
-    
+`
+const LinkButton = styled.button`
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    color: black;
+    border: solid 1px black;
+    padding: 0 15px;
+    cursor: pointer;
 `
 const Button = styled.button`
     border: solid 1px #000;
@@ -56,23 +55,34 @@ const Input = styled.input`
     }
 `
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-}
 // function to handle form submite with the category name (call back function to send request to fetch any category name has the searched name)
-const SearchImg = () => {
+const SearchImg = (props) => {
+    
+    const [Val, setVal] = useState('');
+
+    const handleChange = (e) => {
+        setVal(e.target.value)
+    }
+    const handleClick = () => {
+        setVal('');
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.searchHandle(Val);
+    }
+
     return(
         <Form onSubmit={handleSubmit}>
             <Buttons>
-                {/* link to the same page with no filter */}
-                <Link to='/' >
+                <LinkButton onClick={handleClick}>
                     Clear
-                </Link>
+                </LinkButton>
                 <Button>
                     Apply
                 </Button>
             </Buttons>
-            <Input type='text' placeholder='Search' />
+            <Input type='text' placeholder='Search' onChange={handleChange} />
         </Form>
     )
 }

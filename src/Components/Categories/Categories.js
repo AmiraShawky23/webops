@@ -72,10 +72,29 @@ const Categories = () => {
 
   const dispatch = useDispatch()
   const { categories } = useSelector(categoriesSelector)	
-		
+
+
+  const [isSearching, setIsSearching] = useState(false)
+  const [listOfCategories, setListOfCategories] = useState(null)
+  
+  const searchHandle = (value) => {
+    setListOfCategories(categories.filter(category => category.name.toLowerCase().includes(value.toLowerCase())));
+    setIsSearching(true)
+  }
+  
   useEffect(() => {
-    dispatch(fetchCategories())
-  }, [dispatch])
+    if(isSearching){
+      if(listOfCategories == null){
+        dispatch(fetchCategories())
+        setListOfCategories(categories)
+      }
+      // console.log(categories)
+    }
+    else {
+      dispatch(fetchCategories())
+      setListOfCategories(categories)
+    }
+  }, [dispatch,categories])
 
 
   const [sliderOpen, setSliderOpen] = useState(false);
@@ -94,21 +113,21 @@ const Categories = () => {
       <CategoriesStyles>
           <FindContainer>
               <Find>
-                  <Container onClick={sliderClickHandler} >
-                      <H5>
-                          Find categories here
-                      </H5>
-                      <FontAwesomeIcon icon={faChevronDown} />
-                  </Container>
-                  <SearchContainer>
-                      <SearchCategory />
-                  </SearchContainer>
+                <Container onClick={sliderClickHandler} >
+                  <H5>
+                    Find categories here
+                  </H5>
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </Container>
+                <SearchContainer>
+                  <SearchCategory searchHandle={searchHandle}/>
+                </SearchContainer>
               </Find>
               <MySlider className={sliderClasses.join(' ')}>
                 <CategoriesSlider Suggestions={categories}/>
               </MySlider>
           </FindContainer>
-          <CategoriesList list={categories}/>
+          <CategoriesList list={listOfCategories}/>
       </CategoriesStyles>
   )
 }

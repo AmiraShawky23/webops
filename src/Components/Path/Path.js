@@ -45,13 +45,23 @@ const IconContainer = styled.div`
 const Path = ({current, next}) => {
     return(
         <PathStyled>
+            <Prev>
+                <PrevH2>
+                    <Link to='/categories'>
+                        gallery
+                    </Link>
+                </PrevH2>
+                <IconContainer>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                </IconContainer>
+            </Prev>
             {
                 current && current.map(prevItem => {
                     return (
                         <Prev key={prevItem.id}>
                             <PrevH2>
-                                <Link to={'/' + prevItem.link}>
-                                    {prevItem.text}
+                                <Link to={'/category_' + prevItem.id}>
+                                    {prevItem.name}
                                 </Link>
                             </PrevH2>
                             <IconContainer>

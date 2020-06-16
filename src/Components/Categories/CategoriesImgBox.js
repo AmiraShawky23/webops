@@ -17,7 +17,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 
     
 const CategoriesBox = styled.div`  
-    width: 32%;
+    width: 33%;
     margin: 0 0.3rem;
     height: 230px;
     background-position-x: center;
@@ -40,7 +40,7 @@ const CategoriesBox = styled.div`
     }
 
     @media (max-width: 991px) {
-        width: 47%;
+        width: 48%;
         margin-bottom: 1rem;
     }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Path from '../Path/Path'
 import CategoryImgGallery from './CategoryImgGallery'
@@ -30,26 +30,30 @@ const Category = (props) => {
 
     
     const dispatch = useDispatch()
-    const { category } = useSelector(categorySelector)	
-            
+    const { category } = useSelector(categorySelector)
+
+    const [listOfPhotos, setListOfPhotos] = useState(null)
+
+    const searchHandle = (value) => {
+        setListOfPhotos(category.photos.filter(photo => photo.title.toLowerCase().includes(value.toLowerCase())));
+    }
+
     useEffect(() => {
-        dispatch(fetchCategory(id))
-    }, [dispatch,id])
-
-
-    const pathList = [
-        { id: 1, text: 'gallery', link: 'category'},
-        { id: 2, text: 'wedding ideas', link: 'category'}
-    ]
+        
+        if(listOfPhotos == null) {
+            dispatch(fetchCategory(id))
+            setListOfPhotos(category.photos)
+        }
+    }, [dispatch,id,category])
+    
 
     return(
         <CategoryStyles>
-            <Path current={pathList} next='Vintage photoshoot' />
+            <Path current={[]} next={category.name} />
             <Container>
-                <SearchImg />
-                <CategoryImgGallery list={category}/>
+                <SearchImg searchHandle={searchHandle} id={id} />
+                <CategoryImgGallery listOfPhotos={listOfPhotos} categoryId={category.id}/>
             </Container>
-            {/* <ImgDetails imgSrc={Img1} title='Vintage photoshoot' text='A vintage-themed wedding photoshoot for the bride and groom.' name='Gihad Belasy' link='https://google.com/' faceLink='https://www.facebook.com/' twitterLink='https://twitter.com/home' /> */}
         </CategoryStyles>
     )
 }
