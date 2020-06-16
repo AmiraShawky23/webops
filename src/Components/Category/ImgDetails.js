@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components' 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import Related from './Related';
 import Path from '../Path/Path';
-// import { useDispatch, useSelector } from 'react-redux'
-// import { fetchPhoto, photoSelector } from '../../app/slicers/imgDetailsSlicer'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategory, categorySelector } from '../../app/slicers/categorySlicer'
+import { fetchPhoto, photoSelector } from '../../app/slicers/photoSlicer'
+import { fetchPhotos, photosSelector } from '../../app/slicers/photosSlicer'
+
+
 
 
 const ImgDetailsStyles = styled.div`
@@ -76,26 +80,29 @@ const ImgDetails = (props) => {
 
     let id = props.match.params.category_id;
     id = id.replace("category_","");
-
     let photoid = props.match.params.photo_id;
     photoid = photoid.replace("photo_","");
 
-    
-    // const dispatch = useDispatch()
-    // const { category } = useSelector(photoSelector)	
-    
-    // const filterCategory = category.filter(photo => photoid !== photo.id)
-    
-    // useEffect(() => {
-    //     dispatch(fetchPhoto(id,photoid))
-    // }, [dispatch,id,photoid])
-    
-    console.log('props: ',props)
+    const dispatch = useDispatch()
+    const { category } = useSelector(categorySelector)
+    const { photo } = useSelector(photoSelector)
+    const { photos } = useSelector(photosSelector)
+
+    const [load, setload] = useState(false)
+        
+    useEffect(() => {
+        if(!load) {
+            setload(true)
+            dispatch(fetchCategory(id))
+            dispatch(fetchPhoto(id, photoid))
+            dispatch(fetchPhotos(id, photoid))
+        }
+    }, [dispatch,id,category,photo,photos])
 
     return (
         <ImgDetailsStyles>
-            <Path />
-            {/* <Container>
+            <Path current={category} next={photo.title}/>
+            <Container>
                 <ImgContainer>
                     <img src={photo.image} alt=""/>
                 </ImgContainer>
@@ -118,9 +125,9 @@ const ImgDetails = (props) => {
                         </Iocn>
                     </IconContainer>
                 </ContentContainer>
-            </Container> */}
-            {/* <Related list={filterCategory} /> */}
-        </ImgDetailsStyles>
+            </Container>
+            <Related categoryId={category.id} list={photos} />
+        </ImgDetailsStyles> 
     )
 }
 export default ImgDetails;

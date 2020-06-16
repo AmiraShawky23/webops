@@ -55,7 +55,7 @@ const H4 = styled.h4`
     color: black;
 `
 
-const Related = ({list}) => {
+const Related = ({categoryId,list}) => {
     return (
         <RelatedStyles>
             <H2>Related Photos</H2>
@@ -64,7 +64,7 @@ const Related = ({list}) => {
                     list && list.map(listItem => {
                         return (
                             <ImgContainerStyles key={listItem.id}>
-                                <Link to={'/photo_' + listItem.id}>
+                                <Link to={`/${categoryId}/photo_'${listItem.id}`}>
                                     <Img>
                                         <img src={listItem.image} alt=""/>
                                     </Img>

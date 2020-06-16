@@ -4,7 +4,7 @@ import NavbarScrolled from './Components/Navbar/NavbarScrolled';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop'
 import Category from './Components/Category/Category'
-// import ImgDetails from './Components/Category/ImgDetails'
+import ImgDetails from './Components/Category/ImgDetails'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import styled from 'styled-components';
@@ -116,11 +116,10 @@ function App() {
         { backdrop }
         <Main>
           <Switch>
-            {/* remember to create a theme for displaying imgs if needed */}
             <Route path='/' component={Category} exact />
             <Route path='/categories' component={Categories} />
+            <Route path='/:category_id/:photo_id' component={ImgDetails} />
             <Route path='/:category_id' component={Category} />
-            {/* <Route path='/:photo_id' component={ImgDetails} /> */}
           </Switch>
         </Main>
         <ScrollTop />

@@ -26,6 +26,9 @@ const Container = styled.div`
 const Category = (props) => {
     
     let id = props.match.params.category_id;
+    if(id === undefined || id === null) {
+        id = "1";
+    }
     id = id.replace("category_","");
 
     
