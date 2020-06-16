@@ -8,7 +8,7 @@ const RelatedStyles = styled.div`
     justify-content: space-between;
     flex-direction: column;
     text-align: left;
-    margin-top: 3rem;
+    margin: 3rem 0;
 `
 const ImgsContainer = styled.div`
     display: flex;
@@ -18,7 +18,8 @@ const H2 = styled.h2`
     font-size: 2rem;
     line-height: 1.42;
     margin: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
     font-weight: bold;
     color: black;
 `
@@ -26,6 +27,10 @@ const ImgContainerStyles = styled.div`
     width: 24%;
     margin-right: 0.3rem;
     margin-top: 1rem;
+    img {
+        object-fit: none;
+        height: 230px;
+    }
 
     @media (max-width: 991px) {
         width: 33%;
@@ -64,7 +69,7 @@ const Related = ({categoryId,list}) => {
                     list && list.map(listItem => {
                         return (
                             <ImgContainerStyles key={listItem.id}>
-                                <Link to={`/${categoryId}/photo_'${listItem.id}`}>
+                                <Link to={`/category_${categoryId}/photo_${listItem.id}`}>
                                     <Img>
                                         <img src={listItem.image} alt=""/>
                                     </Img>

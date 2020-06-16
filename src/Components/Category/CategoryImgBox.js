@@ -20,7 +20,8 @@ const Img = styled.div`
     display: flex;
     align-items: center;
     img {
-        height: max-content;
+        object-fit: none;
+        height: 230px;
     }
 `
 const H4 = styled.h4`

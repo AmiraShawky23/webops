@@ -33,7 +33,6 @@ const categorySlice = createSlice({
   export function fetchCategory(id) {
     return async dispatch => {
       dispatch(getCategory())
-  
       try {
         const response = await fetch(`http://localhost:4000/categories/${id}`)
         const data = await response.json()

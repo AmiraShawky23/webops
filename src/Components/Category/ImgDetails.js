@@ -10,8 +10,6 @@ import { fetchPhoto, photoSelector } from '../../app/slicers/photoSlicer'
 import { fetchPhotos, photosSelector } from '../../app/slicers/photosSlicer'
 
 
-
-
 const ImgDetailsStyles = styled.div`
     width: 100%;
     display: flex;
@@ -88,46 +86,55 @@ const ImgDetails = (props) => {
     const { photo } = useSelector(photoSelector)
     const { photos } = useSelector(photosSelector)
 
+
     const [load, setload] = useState(false)
         
     useEffect(() => {
         if(!load) {
             setload(true)
             dispatch(fetchCategory(id))
-            dispatch(fetchPhoto(id, photoid))
-            dispatch(fetchPhotos(id, photoid))
+            dispatch(fetchPhoto(id,photoid))
+            dispatch(fetchPhotos(id,photoid))
         }
     }, [dispatch,id,category,photo,photos])
 
+
+
     return (
-        <ImgDetailsStyles>
-            <Path current={category} next={photo.title}/>
-            <Container>
-                <ImgContainer>
-                    <img src={photo.image} alt=""/>
-                </ImgContainer>
-                <ContentContainer>
-                    <H2>{photo.title}</H2>
-                    <P>{photo.paragraph}</P>
-                    <PhotographerLink>
-                        <a href={photo.author_link}>{photo.author}</a>
-                    </PhotographerLink>
-                    <IconContainer>
-                        <Iocn>
-                            <a href={photo.author_facebook}>
-                                <FontAwesomeIcon icon={faFacebookF} />
-                            </a>                    
-                        </Iocn>
-                        <Iocn>
-                            <a href={photo.author_twitter}>
-                                <FontAwesomeIcon icon={faTwitter} />
-                            </a> 
-                        </Iocn>
-                    </IconContainer>
-                </ContentContainer>
-            </Container>
-            <Related categoryId={category.id} list={photos} />
-        </ImgDetailsStyles> 
+        
+        photo != null ? (
+            
+            <ImgDetailsStyles>
+                <Path current={category} next={photo[0].title}/>
+                <Container>
+                    <ImgContainer>
+                        <img src={photo[0].image} alt=""/>
+                    </ImgContainer>
+                    <ContentContainer>
+                        <H2>{photo[0].title}</H2>
+                        <P>{photo[0].paragraph}</P>
+                        <PhotographerLink>
+                            <a href={photo[0].author_link}>{photo[0].author}</a>
+                        </PhotographerLink>
+                        <IconContainer>
+                            <Iocn>
+                                <a href={photo[0].author_facebook}>
+                                    <FontAwesomeIcon icon={faFacebookF} />
+                                </a>                    
+                            </Iocn>
+                            <Iocn>
+                                <a href={photo[0].author_twitter}>
+                                    <FontAwesomeIcon icon={faTwitter} />
+                                </a> 
+                            </Iocn>
+                        </IconContainer>
+                    </ContentContainer>
+                </Container>
+                <Related categoryId={category.id} list={photos} />
+            </ImgDetailsStyles> 
+            ) : (
+                <div>loading...</div>
+            )
     )
 }
 export default ImgDetails;

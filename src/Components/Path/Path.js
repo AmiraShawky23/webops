@@ -8,6 +8,7 @@ const PathStyled = styled.div`
   width: 92%;
   display: flex;
   align-items: center;
+  margin-bottom: 1.2rem;
   
 `
 const Prev = styled.div`
@@ -56,20 +57,20 @@ const Path = ({current, next}) => {
                 </IconContainer>
             </Prev>
             {
-                current && current.map(prevItem => {
-                    return (
-                        <Prev key={prevItem.id}>
+                current.length != 0 ? (
+                        <Prev>
                             <PrevH2>
-                                <Link to={'/category_' + prevItem.id}>
-                                    {prevItem.name}
+                                <Link to={'/category_' + current.id}>
+                                    {current.name}
                                 </Link>
                             </PrevH2>
                             <IconContainer>
                                 <FontAwesomeIcon icon={faChevronRight} />
                             </IconContainer>
                         </Prev>
+                    ) : (
+                        null
                     )
-                })
             }
             <H2>{next}</H2>
 

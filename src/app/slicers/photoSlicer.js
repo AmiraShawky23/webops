@@ -33,13 +33,13 @@ const photoSlice = createSlice({
   export function fetchPhoto(id, photoid) {
     return async dispatch => {
       dispatch(getPhoto())
-  
+
       try {
         const response = await fetch(`http://localhost:4000/categories/${id}`)
         const data = await response.json()
 
         const photo = data.photos.filter(tempPhoto => tempPhoto.id === photoid)
-  
+        
         dispatch(getPhotoSuccess(photo))
       } catch (error) {
         dispatch(getPhotoFailure())
